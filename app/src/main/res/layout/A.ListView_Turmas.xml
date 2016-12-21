@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_height="132dp"
+        android:layout_width="match_parent"
+        android:layout_weight="0.97">
+    </ListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true">
+
+
+
+
+            <Button
+                android:text="Adicionar Turma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Btn_add_Turma"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/display_number"
+                />
+
+            <Button
+                android:text="Remover Turma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_delete_turma"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/display_number" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Retroceder"
+                android:id="@+id/button_delete"
+                android:layout_centerVertical="true"
+                android:layout_below="@+id/button_delete"
+                android:layout_alignLeft="@+id/button_delete"
+                android:layout_alignStart="@+id/button_delete" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
