@@ -2,4 +2,12 @@
     <string name="app_name">TitchersPET</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="admin">Administrador</string>
+    <string name="register">Registo de educadora</string>
+    <string name="set_name">Insira um nome</string>
+    <string name="set_email">Insira um email</string>
+    <string name="set_password">Insira uma password</string>
+    <string name="name">Nome:</string>
+    <string name="email">Email:</string>
+    <string name="password2">Password:</string>
 </resources>

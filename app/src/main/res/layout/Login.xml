@@ -29,7 +29,9 @@
         android:hint="@string/password"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/username"
+        android:inputType="textPassword"
         />
+
     <ImageButton
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
@@ -37,6 +39,7 @@
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:src="@drawable/login"
+        android:onClick="onLogin"
         android:background="@drawable/button_style"
         android:paddingLeft="45dp"
         android:paddingRight="45dp"

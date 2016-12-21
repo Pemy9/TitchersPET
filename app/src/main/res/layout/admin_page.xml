@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/user_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/admin"
+        android:textSize="40sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorText"
+        />
+
+    <ImageButton
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/user_text1"
+        android:src="@drawable/add"
+        android:background="@drawable/button_style"
+        android:paddingLeft="45dp"
+        android:paddingRight="45dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="50dp"
+        android:onClick="onRegister"
+        />
+
+    <ImageButton
+        android:id="@+id/edit_ed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/register"
+        android:src="@drawable/edit"
+        android:background="@drawable/button_style"
+        android:paddingLeft="45dp"
+        android:paddingRight="45dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="15dp"
+        />
+
+    <ImageButton
+        android:id="@+id/manage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/edit_ed"
+        android:src="@drawable/gestor"
+        android:background="@drawable/button_style"
+        android:paddingLeft="45dp"
+        android:paddingRight="45dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="15dp"
+    />
+
+    <ImageButton
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/manage"
+        android:src="@drawable/logout"
+        android:onClick="onLogout"
+        android:background="@drawable/button_style"
+        android:paddingLeft="45dp"
+        android:paddingRight="45dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="15dp"
+    />
+
+</RelativeLayout>

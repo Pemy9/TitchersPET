@@ -18,6 +18,13 @@
         <activity android:name=".MainActivity"
                   android:theme="@style/GeneralNoTitle">
         </activity>
+        <activity android:name=".AdminActivity"
+                  android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".RegistoEducadoraActivity"
+                  android:label="@string/register"
+                  android:parentActivityName=".AdminActivity">
+        </activity>
     </application>
 
 </manifest>
