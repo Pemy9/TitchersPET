@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/number"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorText"
+        android:paddingTop="10dp"
+        />
+    <EditText
+        android:id="@+id/set_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/set_number"
+        android:layout_below="@+id/number"
+        android:paddingTop="5dp"
+        />
+
+    <TextView
+        android:id="@+id/sala"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sala"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorText"
+        android:paddingTop="10dp"
+        android:layout_below="@+id/set_number"
+        />
+
+    <EditText
+        android:id="@+id/set_sala"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/set_sala"
+        android:layout_below="@+id/sala"
+        android:paddingTop="5dp"
+        android:inputType="textEmailAddress"
+        />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorText"
+        android:paddingTop="10dp"
+        android:layout_below="@+id/set_sala"
+        />
+    <EditText
+        android:id="@+id/set_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/set_name"
+        android:layout_below="@+id/name"
+        android:paddingTop="5dp"
+        />
+
+    <ImageButton
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/set_name"
+        android:src="@drawable/save"
+        android:background="@drawable/button_style"
+        android:paddingLeft="45dp"
+        android:paddingRight="45dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="50dp"
+        android:onClick="onSave"
+        />
+</RelativeLayout>

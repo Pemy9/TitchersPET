@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/icon"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -24,6 +24,35 @@
         <activity android:name=".RegistoEducadoraActivity"
                   android:label="@string/register"
                   android:parentActivityName=".AdminActivity">
+        </activity>
+        <activity android:name=".ListaEditaEducadorasActivity"
+                  android:label="@string/teachers"
+                  android:parentActivityName=".AdminActivity">
+        </activity>
+        <activity android:name=".EditaEducadorasActivity"
+                  android:parentActivityName=".ListaEditaEducadorasActivity">
+        </activity>
+        <activity android:name=".ListaGestaoEducadorasActivity"
+                  android:parentActivityName=".AdminActivity">
+        </activity>
+        <activity android:name=".ListaGestaoTurmaActivity"
+                  android:label="@string/classes"
+                  android:parentActivityName=".ListaEditaEducadorasActivity">
+        </activity>
+        <activity android:name=".ListaGestaoAlunosActivity"
+                  android:label="@string/students"
+                  android:parentActivityName=".ListaGestaoTurmaActivity">
+        </activity>
+        <activity android:name=".RegistoTurmaActivity"
+                  android:label="@string/register2"
+                  android:parentActivityName=".ListaGestaoTurmaActivity">
+        </activity>
+        <activity android:name=".AlunoActivity"
+                  android:parentActivityName=".RegistoTurmaActivity">
+        </activity>
+        <activity android:name=".RegistoAlunoActivity"
+                  android:label="@string/register3"
+                  android:parentActivityName=".ListaGestaoAlunosActivity">
         </activity>
     </application>
 

@@ -45,6 +45,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_marginTop="15dp"
+        android:onClick="onEdit"
         />
 
     <ImageButton
@@ -60,6 +61,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_marginTop="15dp"
+        android:onClick="onManage"
     />
 
     <ImageButton
@@ -69,13 +71,13 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/manage"
         android:src="@drawable/logout"
-        android:onClick="onLogout"
         android:background="@drawable/button_style"
         android:paddingLeft="45dp"
         android:paddingRight="45dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_marginTop="15dp"
+        android:onClick="onLogout"
     />
 
 </RelativeLayout>

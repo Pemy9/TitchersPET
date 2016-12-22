@@ -19,12 +19,22 @@ public class AdminActivity extends AppCompatActivity{
     }
 
     public void onLogout(View v){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        Intent intent1 = new Intent(this, MainActivity.class);
+        startActivity(intent1);
     }
 
     public void onRegister(View v){
-        Intent intent = new Intent(this, RegistoEducadoraActivity.class);
-        startActivity(intent);
+        Intent intent2 = new Intent(this, RegistoEducadoraActivity.class);
+        startActivity(intent2);
+    }
+
+    public void onEdit(View v){
+        Intent intent3 = new Intent(this, ListaEditaEducadorasActivity.class);
+        startActivity(intent3);
+    }
+
+    public void onManage(View v){
+        Intent intent4 = new Intent(this, ListaGestaoEducadorasActivity.class);
+        startActivity(intent4);
     }
 }

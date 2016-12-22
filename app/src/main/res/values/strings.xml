@@ -4,10 +4,24 @@
     <string name="password">Password</string>
     <string name="admin">Administrador</string>
     <string name="register">Registo de educadora</string>
+    <string name="register2">Registo de turma</string>
+    <string name="register3">Registo de aluno</string>
     <string name="set_name">Insira um nome</string>
     <string name="set_email">Insira um email</string>
+    <string name="set_email_ed">Insira o email do enc. educação</string>
     <string name="set_password">Insira uma password</string>
+    <string name="set_date">Insira uma data de nascimento</string>
+    <string name="set_sex">Insira o sexo</string>
     <string name="name">Nome:</string>
+    <string name="date">Data de nascimento:</string>
+    <string name="sex">Sexo:</string>
     <string name="email">Email:</string>
     <string name="password2">Password:</string>
+    <string name="teachers">Educadoras</string>
+    <string name="students">Alunos</string>
+    <string name="classes">Turmas</string>
+    <string name="number">Número:</string>
+    <string name="set_number">Insira o número:</string>
+    <string name="sala">Sala:</string>
+    <string name="set_sala">Insira o número da sala:</string>
 </resources>
