@@ -28,4 +28,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent1 = new Intent(this, AdminActivity.class);
         startActivity(intent1);
     }
+
+    public void onTeste(View v){
+        Intent intent5 = new Intent(this, EducadoraActivity.class);
+        startActivity(intent5);
+    }
 }

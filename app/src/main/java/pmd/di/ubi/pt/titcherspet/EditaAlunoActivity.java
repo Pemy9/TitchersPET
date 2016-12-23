@@ -5,18 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-public class EditaEducadorasActivity extends AppCompatActivity{
-
+public class EditaAlunoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edita_educadora);
+        setContentView(R.layout.edita_aluno);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    public void onSaveEdit(View v){
-            Toast toast = Toast.makeText(this, "Educadora editada com sucesso!", Toast.LENGTH_SHORT);
-            toast.show();
+    public void onSave(View v){
+        Toast toast = Toast.makeText(this, "Aluno editado com sucesso!", Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

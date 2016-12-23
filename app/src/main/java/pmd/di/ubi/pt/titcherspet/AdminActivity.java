@@ -7,15 +7,12 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class AdminActivity extends AppCompatActivity{
-    ImageButton logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_page);
 
-
-        logout = (ImageButton) findViewById(R.id.logout);
     }
 
     public void onLogout(View v){
@@ -37,4 +34,5 @@ public class AdminActivity extends AppCompatActivity{
         Intent intent4 = new Intent(this, ListaGestaoEducadorasActivity.class);
         startActivity(intent4);
     }
+
 }

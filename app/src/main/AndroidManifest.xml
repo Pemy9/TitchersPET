@@ -18,8 +18,7 @@
         <activity android:name=".MainActivity"
                   android:theme="@style/GeneralNoTitle">
         </activity>
-        <activity android:name=".AdminActivity"
-                  android:theme="@style/AppTheme">
+        <activity android:name=".AdminActivity">
         </activity>
         <activity android:name=".RegistoEducadoraActivity"
                   android:label="@string/register"
@@ -30,6 +29,7 @@
                   android:parentActivityName=".AdminActivity">
         </activity>
         <activity android:name=".EditaEducadorasActivity"
+                  android:label="@string/edit_teacher"
                   android:parentActivityName=".ListaEditaEducadorasActivity">
         </activity>
         <activity android:name=".ListaGestaoEducadorasActivity"
@@ -53,6 +53,16 @@
         <activity android:name=".RegistoAlunoActivity"
                   android:label="@string/register3"
                   android:parentActivityName=".ListaGestaoAlunosActivity">
+        </activity>
+        <activity android:name=".EditaAlunoActivity"
+                  android:label="@string/edit_student"
+                  android:parentActivityName=".AlunoActivity">
+        </activity>
+        <activity android:name=".NotasAlunoActivity"
+                  android:label="@string/info"
+                  android:parentActivityName=".AlunoActivity">
+        </activity>
+        <activity android:name=".EducadoraActivity">
         </activity>
     </application>
 

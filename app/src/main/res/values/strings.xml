@@ -3,6 +3,7 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="admin">Administrador</string>
+    <string name="educadora">Educadora</string>
     <string name="register">Registo de educadora</string>
     <string name="register2">Registo de turma</string>
     <string name="register3">Registo de aluno</string>
@@ -23,5 +24,25 @@
     <string name="number">Número:</string>
     <string name="set_number">Insira o número:</string>
     <string name="sala">Sala:</string>
-    <string name="set_sala">Insira o número da sala:</string>
+    <string name="set_sala">Insira o número da sala</string>
+    <string name="edit_student">Editar aluno</string>
+    <string name="edit_teacher">Editar educadora</string>
+    <string name="xixi">Fez xixi?</string>
+    <string name="coco">Fez cocó?</string>
+    <string name="cry">Chorou?</string>
+    <string name="eat1">Almoçou bem?</string>
+    <string name="eat2">Lanchou bem?</string>
+    <string name="sleep">Dormiu bem?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="rating">Comportamento:</string>
+    <string name="info">Informação diária do aluno</string>
+    <string name="ent_a">Responsável por entrega:</string>
+    <string name="deliv_a">Responsável por retorno:</string>
+    <string name="allergies">Alergias:</string>
+    <string name="medication">Medicação:</string>
+    <string name="outros">Outras informações:</string>
+    <string name="set_medication">Insira aqui a medicação</string>
+    <string name="set_allergies">Insira aqui as alergias</string>
+    <string name="set_outros">Insira aqui as outras informações</string>
 </resources>
