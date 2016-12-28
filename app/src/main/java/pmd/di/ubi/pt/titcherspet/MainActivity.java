@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     TextView oTView1;
     ImageButton oButton1;
     EditText UsernameEt, PasswordEt;
+    String res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         String password = PasswordEt.getText().toString();
         String type = "login";
 
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+        BackgroundWorker backgroundWorker = new BackgroundWorker(this, res);
         backgroundWorker.execute(type, username, password);
     }
 
