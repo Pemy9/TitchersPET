@@ -1,28 +1,23 @@
 package pmd.di.ubi.pt.titcherspet;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.ListView;
 
-public class ListaGestaoEducadorasActivity extends AppCompatActivity{
-    ListView lview;
+public class ListaGestaoEducadorasActivity extends AppCompatActivity {
+
+
+        private String jsonResult;
+        private String url = "http://192.168.137.1/app/educadoras1.php";
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lista_educadoras);
-
-        lview = (ListView) findViewById(R.id.lvItems2);
-
-        getSupportActionBar().setTitle("Educadoras");
+        setContentView(R.layout.lista_educadoras_manage);
+        listView = (ListView) findViewById(R.id.lv);
     }
 
-    public void onTest(View v){
-        Intent intent1 = new Intent(this, ListaGestaoTurmaActivity.class);
-        startActivity(intent1);
-    }
+
 }

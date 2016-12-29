@@ -2,8 +2,8 @@ package pmd.di.ubi.pt.titcherspet;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -47,6 +47,19 @@ public class MainActivity extends AppCompatActivity {
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this, res);
         backgroundWorker.execute(type, username, password);
+
+        res = toString();
+        int a= BackgroundWorker.tipo;
+
+        if(backgroundWorker.tipo == 0){
+            Intent intent1 = new Intent(this, AdminActivity.class);
+            startActivity(intent1);
+        }else if(backgroundWorker.tipo == 1){
+            Intent intent2 = new Intent(this, EducadoraActivity.class);
+            startActivity(intent2);
+        }
+
     }
 
 }
+
