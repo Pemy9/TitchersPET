@@ -36,7 +36,8 @@
                   android:parentActivityName=".ListaEditaEducadorasActivity">
         </activity>
         <activity android:name=".ListaGestaoEducadorasActivity"
-                  android:parentActivityName=".AdminActivity">
+                  android:parentActivityName=".AdminActivity"
+                  android:label="@string/teachers">
         </activity>
         <activity android:name=".ListaGestaoTurmaActivity"
                   android:label="@string/classes"

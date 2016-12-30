@@ -51,12 +51,14 @@ public class MainActivity extends AppCompatActivity {
         res = toString();
         int a= BackgroundWorker.tipo;
 
-        if(backgroundWorker.tipo == 0){
+        if(a == 0){
             Intent intent1 = new Intent(this, AdminActivity.class);
             startActivity(intent1);
-        }else if(backgroundWorker.tipo == 1){
+            finish();
+        }else if(a == 1){
             Intent intent2 = new Intent(this, EducadoraActivity.class);
             startActivity(intent2);
+            finish();
         }
 
     }

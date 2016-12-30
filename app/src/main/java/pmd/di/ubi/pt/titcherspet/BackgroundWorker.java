@@ -17,7 +17,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 public class BackgroundWorker extends AsyncTask<String,Void,String> {
-    public static int tipo = 0;
+    public static int tipo;
     Context context;
     AlertDialog alertDialog;
     String res;
@@ -71,14 +71,10 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPreExecute() {
-        alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Login Status");
     }
 
     @Override
     protected void onPostExecute(String result) {
-        alertDialog.setMessage(result);
-        alertDialog.show();
 
         res=result;
         tipo=Integer.valueOf(res);
