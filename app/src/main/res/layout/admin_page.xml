@@ -17,38 +17,6 @@
         />
 
     <ImageButton
-        android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/user_text1"
-        android:src="@drawable/add"
-        android:background="@drawable/button_style"
-        android:paddingLeft="45dp"
-        android:paddingRight="45dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="50dp"
-        android:onClick="onRegister"
-        />
-
-    <ImageButton
-        android:id="@+id/edit_ed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/register"
-        android:src="@drawable/edit"
-        android:background="@drawable/button_style"
-        android:paddingLeft="45dp"
-        android:paddingRight="45dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="15dp"
-        android:onClick="onEdit"
-        />
-
-    <ImageButton
         android:id="@+id/manage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,19 +33,48 @@
     />
 
     <ImageButton
+        android:id="@+id/edit_ed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/edit"
+        android:background="@drawable/button_style"
+        android:paddingLeft="45dp"
+        android:paddingRight="45dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="43dp"
+        android:onClick="onEdit"
+        android:layout_below="@+id/user_text1"
+        android:layout_alignStart="@+id/manage" />
+
+    <ImageButton
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/manage"
         android:src="@drawable/logout"
         android:background="@drawable/button_style"
         android:paddingLeft="45dp"
         android:paddingRight="45dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="11dp"
         android:onClick="onLogout"
-    />
+        android:layout_below="@+id/manage"
+        android:layout_alignStart="@+id/manage" />
+
+    <ImageButton
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/add"
+        android:background="@drawable/button_style"
+        android:paddingLeft="45dp"
+        android:paddingRight="45dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:onClick="onRegister"
+        android:layout_marginBottom="39dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/logout" />
 
 </RelativeLayout>

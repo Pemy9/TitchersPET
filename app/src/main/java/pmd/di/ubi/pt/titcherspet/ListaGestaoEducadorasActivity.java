@@ -1,73 +1,75 @@
 package pmd.di.ubi.pt.titcherspet;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
+
+import com.amigold.fundapter.BindDictionary;
+import com.amigold.fundapter.FunDapter;
+import com.amigold.fundapter.extractors.StringExtractor;
+import com.kosalgeek.android.json.JsonConverter;
+import com.kosalgeek.asynctask.AsyncResponse;
+import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import pmd.di.ubi.pt.titcherspet.model.EducadoraNome;
+public class ListaGestaoEducadorasActivity extends AppCompatActivity{
 
-public class ListaGestaoEducadorasActivity extends AppCompatActivity implements LoadJSONTask.Listener, AdapterView.OnItemClickListener{
+        private ListView lvEducadoras;
+        private ArrayList<Educadoras> listaEducadoras;
+        private ImageButton onRegisterEducadora;
 
-    private String URL = "http://192.168.137.1:81/educadoras1.php";
-    private ListView listView;
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.lista_educadoras_manage);
 
-    private List<HashMap<String, String>> mMapList = new ArrayList<>();
-    private static final String KEY_NAME = "Nome";
+            onRegisterEducadora = (ImageButton) findViewById(R.id.registerEducadora);
+
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            PostResponseAsyncTask taskRead = new PostResponseAsyncTask(ListaGestaoEducadorasActivity.this, new AsyncResponse() {
+                @Override
+                public void processFinish(String s) {
+                    listaEducadoras = new JsonConverter<Educadoras>().toArrayList(s, Educadoras.class);
+                    BindDictionary<Educadoras> dict = new BindDictionary<Educadoras>();
+                    dict.addStringField(R.id.tvName, new StringExtractor<Educadoras>() {
+                        @Override
+                        public String getStringValue(Educadoras educadora, int position) {
+                            return educadora.Nome;
+                        }
+                    });
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.lista_educadoras_manage);
-        listView = (ListView) findViewById(R.id.lv);
-        listView.setOnItemClickListener(this);
-        new LoadJSONTask(this).execute(URL);
-    }
+                    FunDapter<Educadoras> adapter = new FunDapter<>(
+                            ListaGestaoEducadorasActivity.this, listaEducadoras, R.layout.layout_list, dict);
 
-    @Override
-    public void onLoaded(List<EducadoraNome> edList) {
+                    lvEducadoras = (ListView)findViewById(R.id.lvEducadoras);
+                    lvEducadoras.setAdapter(adapter);
+                    lvEducadoras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Educadoras selectEducadora = listaEducadoras.get(position);
+                            String email = selectEducadora.Email;
+                            Intent intent = new Intent(ListaGestaoEducadorasActivity.this, ListaEditaEducadorasActivity.class);
+                            intent.putExtra("email", email);
+                            startActivity(intent);
+                        }
+                    });
+                }
+            });
 
-        for (EducadoraNome ed : edList) {
+            taskRead.execute("http://192.168.207.235:81/educadoras.php");
 
-            HashMap<String, String> map = new HashMap<>();
-
-            map.put(KEY_NAME, ed.getNome());
-
-            mMapList.add(map);
         }
 
-        loadListView();
-    }
-
-    @Override
-    public void onError() {
-
-        Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-        Toast.makeText(this, mMapList.get(i).get(KEY_NAME),Toast.LENGTH_LONG).show();
-    }
-
-    private void loadListView() {
-
-        ListAdapter adapter = new SimpleAdapter(ListaGestaoEducadorasActivity.this, mMapList, R.layout.list_db,
-                new String[] { KEY_NAME },
-                new int[] { R.id.ed_name });
-
-        listView.setAdapter(adapter);
-
+    public void onRegister(View v) {
+        Intent novaEducadora = new Intent(ListaGestaoEducadorasActivity.this, RegistoEducadoraActivity.class);
+        startActivity(novaEducadora);
     }
 }

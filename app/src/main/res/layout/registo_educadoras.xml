@@ -67,7 +67,7 @@
         />
 
     <ImageButton
-        android:id="@+id/register"
+        android:id="@+id/saveRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
