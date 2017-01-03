@@ -1,11 +1,7 @@
 package pmd.di.ubi.pt.titcherspet;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.amigold.fundapter.BindDictionary;
@@ -17,12 +13,10 @@ import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
 import java.util.ArrayList;
 
-public class ListaEditaEducadorasActivity extends AppCompatActivity implements AsyncResponse{
+public class ListaEditaEducadorasActivity extends AppCompatActivity{
     private ListView lvTurmas;
     private ArrayList<Turmas> listaTurmas;
-    private ImageButton onRegisterTurmas;
 
-    final String LOG = "ListaEditaEducadorasActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,45 +24,33 @@ public class ListaEditaEducadorasActivity extends AppCompatActivity implements A
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_turma);
 
-        onRegisterTurmas = (ImageButton)findViewById(R.id.registerTurma);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String email = getIntent().getStringExtra("email");
 
-        PostResponseAsyncTask novaTask = new PostResponseAsyncTask(ListaEditaEducadorasActivity.this, this);
-        novaTask.execute("http://192.168.1.67:81/turmas.php");
+        PostResponseAsyncTask task1 = new PostResponseAsyncTask(ListaEditaEducadorasActivity.this, new AsyncResponse() {
+            @Override
+            public void processFinish(String s) {
+                listaTurmas = new JsonConverter<Turmas>().toArrayList(s, Turmas.class);
+                BindDictionary<Turmas> dict = new BindDictionary<Turmas>();
+                dict.addStringField(R.id.tvName, new StringExtractor<Turmas>() {
+                    @Override
+                    public String getStringValue(Turmas item, int position) {
+                        return item.N_Turma;
+                    }
+                });
+
+                FunDapter<Turmas> adapter = new FunDapter<>(ListaEditaEducadorasActivity.this, listaTurmas, R.layout.layout_list, dict);
+                lvTurmas = (ListView)findViewById(R.id.lvTurmas);
+                lvTurmas.setAdapter(adapter);
+            }
+        });
+        task1.execute("http://192.168.207.235:81/turmas.php");
+
+
     }
 
 
-    @Override
-    public void processFinish(String s) {
-        listaTurmas = new JsonConverter<Turmas>().toArrayList(s, Turmas.class);
-        BindDictionary<Turmas> bindDictionary = new BindDictionary<Turmas>();
-        bindDictionary.addStringField(R.id.tvName, new StringExtractor<Turmas>() {
-            @Override
-            public String getStringValue(Turmas item, int position) {
-                return item.N_Turma;
-            }
-        });
-        FunDapter<Turmas> dapter = new FunDapter<>(ListaEditaEducadorasActivity.this, listaTurmas, R.layout.layout_list, bindDictionary);
-        lvTurmas = (ListView)findViewById(R.id.lvTurmas);
-        lvTurmas.setAdapter(dapter);
-        lvTurmas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Turmas selectTurma = listaTurmas.get(position);
-                //String email = selectTurma.Email;
-                Intent intent = new Intent(ListaEditaEducadorasActivity.this, EditaEducadorasActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+
 }
 
-
-//HashMap postData = new HashMap();
-//postData.put("mobile", "android");
-//postData.put("txtEmail", email);
-//PostResponseAsyncTask task = new PostResponseAsyncTask(this, postData);
-//task.execute("http://192.168.1.67:81/turmas.php");

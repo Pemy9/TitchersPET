@@ -16,20 +16,5 @@
         android:layout_above="@+id/register">
     </ListView>
 
-    <ImageButton
-            android:id="@+id/registerTurma"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/add"
-            android:background="@drawable/button_style"
-            android:paddingLeft="45dp"
-            android:paddingRight="45dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:onClick="onRegisterTurma"
-            android:layout_marginBottom="22dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-
 
 </RelativeLayout>
