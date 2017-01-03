@@ -1,7 +1,10 @@
 package pmd.di.ubi.pt.titcherspet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.amigold.fundapter.BindDictionary;
@@ -48,6 +51,16 @@ public class ListaGestaoTurmaActivity extends AppCompatActivity{
                 FunDapter<Turmas> adapter = new FunDapter<>(ListaGestaoTurmaActivity.this, listaTurmas, R.layout.layout_list, dict);
                 lvTurmas = (ListView)findViewById(R.id.lvTurmas);
                 lvTurmas.setAdapter(adapter);
+                lvTurmas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Turmas selectTurma = listaTurmas.get(position);
+                        String turma = selectTurma.N_Turma;
+                        Intent intent = new Intent(ListaGestaoTurmaActivity.this, ListaGestaoAlunosActivity.class);
+                        intent.putExtra("turma", turma);
+                        startActivity(intent);
+                    }
+                });
             }
         });
         task1.execute("http://192.168.207.235:81/turmas.php");

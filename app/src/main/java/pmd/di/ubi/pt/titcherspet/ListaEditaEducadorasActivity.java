@@ -1,7 +1,11 @@
 package pmd.di.ubi.pt.titcherspet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.amigold.fundapter.BindDictionary;
@@ -12,46 +16,57 @@ import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ListaEditaEducadorasActivity extends AppCompatActivity{
-    private ListView lvTurmas;
-    private ArrayList<Turmas> listaTurmas;
-
+    private ListView lvEducadoras;
+    private ArrayList<Educadoras> listaEducadoras;
+    private ImageButton onRegisterEducadora;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lista_turma);
+        setContentView(R.layout.lista_educadoras_manage);
+
+        onRegisterEducadora = (ImageButton) findViewById(R.id.registerEducadora);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        String email = getIntent().getStringExtra("email");
-
-        HashMap postData = new HashMap();
-        postData.put("mobile", "android");
-        postData.put("txtEmail", email);
-
-        PostResponseAsyncTask task1 = new PostResponseAsyncTask(ListaEditaEducadorasActivity.this, postData, new AsyncResponse() {
+        PostResponseAsyncTask taskRead = new PostResponseAsyncTask(ListaEditaEducadorasActivity.this, new AsyncResponse() {
             @Override
             public void processFinish(String s) {
-                listaTurmas = new JsonConverter<Turmas>().toArrayList(s, Turmas.class);
-                BindDictionary<Turmas> dict = new BindDictionary<Turmas>();
-                dict.addStringField(R.id.tvName, new StringExtractor<Turmas>() {
+                listaEducadoras = new JsonConverter<Educadoras>().toArrayList(s, Educadoras.class);
+                BindDictionary<Educadoras> dict = new BindDictionary<Educadoras>();
+                dict.addStringField(R.id.tvName, new StringExtractor<Educadoras>() {
                     @Override
-                    public String getStringValue(Turmas item, int position) {
-                        return item.N_Turma;
+                    public String getStringValue(Educadoras educadora, int position) {
+                        return educadora.Nome;
                     }
                 });
 
-                FunDapter<Turmas> adapter = new FunDapter<>(ListaEditaEducadorasActivity.this, listaTurmas, R.layout.layout_list, dict);
-                lvTurmas = (ListView)findViewById(R.id.lvTurmas);
-                lvTurmas.setAdapter(adapter);
+
+                FunDapter<Educadoras> adapter = new FunDapter<>(
+                        ListaEditaEducadorasActivity.this, listaEducadoras, R.layout.layout_list, dict);
+
+                lvEducadoras = (ListView)findViewById(R.id.lvEducadoras);
+                lvEducadoras.setAdapter(adapter);
+                lvEducadoras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Educadoras selectEducadora = listaEducadoras.get(position);
+                        String email = selectEducadora.Email;
+                        String nome = selectEducadora.Nome;
+                        String password = selectEducadora.Password;
+                        Intent intent = new Intent(ListaEditaEducadorasActivity.this, EditaEducadorasActivity.class);
+                        intent.putExtra("email", email);
+                        intent.putExtra("nome", nome);
+                        intent.putExtra("password", password);
+                        startActivity(intent);
+                    }
+                });
             }
         });
-        task1.execute("http://192.168.207.235:81/turmas.php");
 
+        taskRead.execute("http://192.168.207.235:81/educadoras.php");
 
     }
 

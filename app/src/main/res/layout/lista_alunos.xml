@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <ListView
-        android:id="@+id/lvItems4"
+        android:id="@+id/lvAlunos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
@@ -11,22 +11,5 @@
         android:maxLines = "100">
     </ListView>
 
-    <com.scalified.fab.ActionButton
-        android:id="@+id/action_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="onAddAluno"
-        />
 
-    <Button
-        android:id="@+id/teste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="teste"
-        android:onClick="onTest"
-        />
 </RelativeLayout>

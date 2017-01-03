@@ -2,16 +2,25 @@ package pmd.di.ubi.pt.titcherspet;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.scalified.fab.ActionButton;
+import com.amigold.fundapter.BindDictionary;
+import com.amigold.fundapter.FunDapter;
+import com.amigold.fundapter.extractors.StringExtractor;
+import com.kosalgeek.android.json.JsonConverter;
+import com.kosalgeek.asynctask.AsyncResponse;
+import com.kosalgeek.asynctask.PostResponseAsyncTask;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ListaGestaoAlunosActivity extends AppCompatActivity{
 
-    ListView lview;
+    ListView lvAlunos;
+    ArrayList<Alunos> listaAlunos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,18 +28,44 @@ public class ListaGestaoAlunosActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_alunos);
 
-        lview = (ListView) findViewById(R.id.lvItems4);
+        String turma = getIntent().getStringExtra("turma");
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Alunos");
+        HashMap postData = new HashMap();
+        postData.put("mobile", "android");
+        postData.put("txtNturma", turma);
 
-        ActionButton actionButton = (ActionButton) findViewById(R.id.action_button);
+        PostResponseAsyncTask task1 = new PostResponseAsyncTask(ListaGestaoAlunosActivity.this, postData, new AsyncResponse() {
+            @Override
+            public void processFinish(String s) {
+                listaAlunos = new JsonConverter<Alunos>().toArrayList(s, Alunos.class);
+                BindDictionary<Alunos> dict = new BindDictionary<Alunos>();
+                dict.addStringField(R.id.tvName, new StringExtractor<Alunos>() {
+                            @Override
+                            public String getStringValue(Alunos item, int position) {
+                                return item.Nome;
+                            }
+                        });
 
-        actionButton.show();
-        actionButton.setButtonColor(ContextCompat.getColor(this, R.color.colorPrimary));
-        actionButton.setButtonColorPressed(ContextCompat.getColor(this, R.color.colorPrimaryDark));
-        actionButton.setImageResource(R.drawable.fab_plus_icon);
-        actionButton.setShadowResponsiveEffectEnabled(true);
+                FunDapter <Alunos> adapter = new FunDapter<>(ListaGestaoAlunosActivity.this, listaAlunos, R.layout.layout_list, dict);
+                lvAlunos = (ListView)findViewById(R.id.lvAlunos);
+                lvAlunos.setAdapter(adapter);
+                lvAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Alunos selectAlunos = listaAlunos.get(position);
+                        String nome = selectAlunos.Nome;
+                        String sexo = selectAlunos.Sexo;
+                        String data = selectAlunos.Data_Nascimento;
+                        Intent intent = new Intent(ListaGestaoAlunosActivity.this, EditaAlunoActivity.class);
+                        intent.putExtra("nome", nome);
+                        intent.putExtra("sexo", sexo);
+                        intent.putExtra("data", data);
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
+        task1.execute("http://192.168.207.235:81/alunos.php");
     }
 
     public void onAddAluno(View v){
