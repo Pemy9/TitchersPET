@@ -12,6 +12,7 @@ import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ListaEditaEducadorasActivity extends AppCompatActivity{
     private ListView lvTurmas;
@@ -28,7 +29,11 @@ public class ListaEditaEducadorasActivity extends AppCompatActivity{
 
         String email = getIntent().getStringExtra("email");
 
-        PostResponseAsyncTask task1 = new PostResponseAsyncTask(ListaEditaEducadorasActivity.this, new AsyncResponse() {
+        HashMap postData = new HashMap();
+        postData.put("mobile", "android");
+        postData.put("txtEmail", email);
+
+        PostResponseAsyncTask task1 = new PostResponseAsyncTask(ListaEditaEducadorasActivity.this, postData, new AsyncResponse() {
             @Override
             public void processFinish(String s) {
                 listaTurmas = new JsonConverter<Turmas>().toArrayList(s, Turmas.class);

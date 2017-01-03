@@ -56,7 +56,7 @@ public class ListaGestaoEducadorasActivity extends AppCompatActivity{
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             Educadoras selectEducadora = listaEducadoras.get(position);
                             String email = selectEducadora.Email;
-                            Intent intent = new Intent(ListaGestaoEducadorasActivity.this, ListaEditaEducadorasActivity.class);
+                            Intent intent = new Intent(ListaGestaoEducadorasActivity.this, ListaGestaoTurmaActivity.class);
                             intent.putExtra("email", email);
                             startActivity(intent);
                         }
