@@ -14,11 +14,4 @@
         android:maxLines = "100">
     </ListView>
 
-    <Button
-        android:id="@+id/teste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="teste"
-        android:onClick="onTest"
-        />
 </RelativeLayout>
