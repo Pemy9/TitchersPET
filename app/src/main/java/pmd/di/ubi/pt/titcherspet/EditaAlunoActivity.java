@@ -23,12 +23,20 @@ public class EditaAlunoActivity extends AppCompatActivity implements AsyncRespon
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edita_aluno);
 
+        String email = getIntent().getStringExtra("email");
+        String nome = getIntent().getStringExtra("nome");
+        String data = getIntent().getStringExtra("data");
+        String sexo = getIntent().getStringExtra("sexo");
+        String numero = getIntent().getStringExtra("numero");
+
         save = (ImageButton)findViewById(R.id.save);
         set_sexo = (EditText)findViewById(R.id.set_sexo);
         set_date = (EditText)findViewById(R.id.set_date);
-        set_email_ed = (EditText)findViewById(R.id.set_email_ed);
-        set_number = (EditText)findViewById(R.id.set_number);
         set_name = (EditText)findViewById(R.id.set_name);
+
+        set_sexo.setText(sexo);
+        set_name.setText(nome);
+        set_date.setText(data);
 
         save.setOnClickListener(this);
 

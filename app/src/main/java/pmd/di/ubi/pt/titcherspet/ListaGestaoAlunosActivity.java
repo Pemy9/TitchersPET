@@ -56,10 +56,14 @@ public class ListaGestaoAlunosActivity extends AppCompatActivity{
                         String nome = selectAlunos.Nome;
                         String sexo = selectAlunos.Sexo;
                         String data = selectAlunos.Data_Nascimento;
-                        Intent intent = new Intent(ListaGestaoAlunosActivity.this, EditaAlunoActivity.class);
+                        String email = selectAlunos.Email_E;
+                        int numero = selectAlunos.N_Aluno;
+                        Intent intent = new Intent(ListaGestaoAlunosActivity.this, AlunoActivity.class);
                         intent.putExtra("nome", nome);
                         intent.putExtra("sexo", sexo);
                         intent.putExtra("data", data);
+                        intent.putExtra("email", email);
+                        intent.putExtra("numero", numero);
                         startActivity(intent);
                     }
                 });
@@ -71,10 +75,5 @@ public class ListaGestaoAlunosActivity extends AppCompatActivity{
     public void onAddAluno(View v){
         Intent intent2 = new Intent(this, RegistoAlunoActivity.class);
         startActivity(intent2);
-    }
-
-    public void onTest(View v){
-        Intent intent1 = new Intent(this, AlunoActivity.class);
-        startActivity(intent1);
     }
 }

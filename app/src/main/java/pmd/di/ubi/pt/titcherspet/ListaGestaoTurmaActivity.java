@@ -65,4 +65,9 @@ public class ListaGestaoTurmaActivity extends AppCompatActivity{
         });
         task1.execute("http://192.168.207.235:81/turmas.php");
     }
+
+    public void onAddTurma(View v){
+        Intent intent3 = new Intent(ListaGestaoTurmaActivity.this, RegistoTurmaActivity.class);
+        startActivity(intent3);
+    }
 }

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.amigold.fundapter.BindDictionary;
@@ -20,14 +19,12 @@ import java.util.ArrayList;
 public class ListaEditaEducadorasActivity extends AppCompatActivity{
     private ListView lvEducadoras;
     private ArrayList<Educadoras> listaEducadoras;
-    private ImageButton onRegisterEducadora;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_educadoras_manage);
-
-        onRegisterEducadora = (ImageButton) findViewById(R.id.registerEducadora);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
