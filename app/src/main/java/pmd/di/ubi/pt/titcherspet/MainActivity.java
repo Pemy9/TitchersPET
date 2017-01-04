@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
@@ -39,17 +40,17 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse, Vi
 
     @Override
     public void processFinish(String result) {
-        //if(result.equals("sucess Admin")){
+        if(result.equals("sucess Admin")){
             Intent admin = new Intent(this, AdminActivity.class);
             startActivity(admin);
-        //}
-        //else if(result.equals("sucess Educadora")){
-        //    Intent educadora = new Intent(this, EducadoraActivity.class);
-        //    startActivity(educadora);
-        //}
-        //else{
-        //    Toast.makeText(this, "Mail ou Password incorrectos!", Toast.LENGTH_LONG).show();
-        //}
+        }
+        else if(result.equals("sucess Educadora")){
+           Intent educadora = new Intent(this, EducadoraActivity.class);
+           startActivity(educadora);
+        }
+        else{
+            Toast.makeText(this, "Mail ou Password incorrectos!", Toast.LENGTH_LONG).show();
+        }
     }
 
 
